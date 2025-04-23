@@ -11,15 +11,15 @@ function App() {
     socket.on('connect', () => {
       console.log('✅ Socket connected:', socket.id);
     });
-  
+
     socket.on('connect_error', (err) => {
       console.error('❌ Socket connect error:', err.message);
     });
-  
+
     socket.on('update', (data) => {
       setCounts(data);
     });
-  
+
     return () => {
       socket.off('connect');
       socket.off('connect_error');
@@ -39,6 +39,20 @@ function App() {
       <h1 style={styles.title}>🔘 ระบบนับปุ่มแบบ Real-time</h1>
 
       <div style={styles.buttonGroup}>
+        <button onClick={() => handleClick('A')} style={styles.button}>
+          ปุ่ม A
+        </button>
+        <button onClick={() => handleClick('B')} style={styles.button}>
+          ปุ่ม B
+        </button>
+        <button onClick={() => handleClick('C')} style={styles.button}>
+          ปุ่ม C
+        </button>
+        <button onClick={() => handleClick('D')} style={styles.button}>
+          ปุ่ม D
+        </button>
+      </div>
+      {/* <div style={styles.buttonGroup}>
         {['A', 'B', 'C', 'D'].map((key) => (
           <button
             key={key}
@@ -48,7 +62,7 @@ function App() {
             ปุ่ม {key}
           </button>
         ))}
-      </div>
+      </div> */}
 
       <table style={styles.table}>
         <thead>
